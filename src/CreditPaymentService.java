@@ -1,8 +1,7 @@
 public class CreditPaymentService {
-    public int calculate(double credit_rub, double period_mo, double rate_pc) {
-        double r = rate_pc / 12 / 100;
-        double rp = Math.pow(1 + r, period_mo);
-        double payment = credit_rub * r * (rp / (rp - 1));
+    public int calculate(double creditRub, double periodMo, double ratePc) {
+        double monthlyRate = ratePc / 12 / 100;
+        double payment = creditRub * monthlyRate * (Math.pow(1 + monthlyRate, periodMo) / (Math.pow(1 + monthlyRate, periodMo) - 1));
         return (int) payment;
     }
 }
